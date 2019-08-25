@@ -9,19 +9,27 @@
                 <ul>
                     {{#each stuff}}
                     {{#unless devoured}}
-                    {{> stuff/stuff-block devoured=true}}
+                    {{> devoured/stuff-block devoured=true}}
                     {{/unless}}
                     <button type="submit" id="delete" value={{stuff.id}}>Delete</button>
                     {{/each}}
                 </ul>
             </div>
             <div class="col-md-6 devoured">
-                
+                {{#each stuff}}
+                {{#if devoured}}
+                {{> devoured/stuff-block sleep=false}}
+                {{/if}}
+                {{/each}}
             </div>
         </div>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-        <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Submit</a>
-        <h3>Enter a burger you want to eat, Click the "SUBMIT" button.</h3>
+
+        <form class="create-form">
+            <textarea class="form-control txtBox" aria-label="With textarea"></textarea>
+            <button type="submit" class="add-burger">Add Burger</button>
+            <h3>Enter a burger you want to eat, Click the "SUBMIT" button.</h3>
+        </form>
+
     </div>
     <div class="col-md-3"></div>
 </div>
