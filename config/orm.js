@@ -1,35 +1,25 @@
-var connection = require("./connection");
-
-var print = function (val){
-    var arr = [];
-
-    for(var i = 0; i < val; i++){
-        arr.push("?");
-    }
-
-    return arr.toString();
-};
-
-
-
-
-
-
+var connection = require("../config/connection");
 
 var orm = {
     all: function (table, cb) {
         var queryString = `SELECT * FROM ${table};`
-
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                console.log(err)
+                throw err
+            } else {
+                cb(result)
+            }
+        })
+    },
+    create: function (table, name, cb) {
+        var queryString = `INSERT INTO ${table} (burger_name) VALUES ("${name}");`;
+        console.log(queryString)
         connection.query(queryString, function (err, result) {
             if (err) throw err;
-        });
-    },
-    create: function (table, col, val, cb) {
-        var queryString = `INSERT INTO ${table} (${col.toString()}) VALUES (${print(val.lenght)});`;
-
-        connection.query(queryString, val, function(err, result){
-            if(err) throw err;
             cb(result);
+            console.log("--------------in ORM--------------------")
+            console.log(result)
         });
     },
     delete: function (table, condition, cb) {
