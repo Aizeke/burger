@@ -7,17 +7,17 @@
         <div class="row">
             <div class="col-md-6 created">
                 <ul>
-                    {{#each stuff}}
-                    {{#unless devoured}}
+                    {{#each burgers}}
+                    {{#unless this.devoured}}
                     {{> devoured/stuff-block devoured=false}}
                     {{/unless}}
-                    <button type="submit" id="delete" value={{stuff.id}}>Delete</button>
+                    <button type="submit" id="delete" value={{this.id}}>Delete</button>
                     {{/each}}
                 </ul>
             </div>
             <div class="col-md-6 devoured">
-                {{#each stuff}}
-                {{#if devoured}}
+                {{#each burgers}}
+                {{#if this.devoured}}
                 {{> devoured/stuff-block devoured=true}}
                 {{/if}}
                 {{/each}}

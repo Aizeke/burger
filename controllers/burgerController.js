@@ -13,7 +13,6 @@ router.get("/", function (req, res) {
         console.log(stuff);
         res.render("index", stuff);
     })
-
 });
 
 router.post("/api/burger", function (req, res) {
