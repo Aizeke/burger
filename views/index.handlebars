@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6 justify-content-center">
-        <img src="https://cdn.imgbin.com/12/25/8/imgbin-hamburger-cheeseburger-fast-food-pixel-art-burger-king-DMapzxUrAQZfLKHSa0sE3mpaY.jpg"
+        <img src="https://images.vexels.com/media/users/3/143047/isolated/preview/b0c9678466af11dd45a62163bdcf03fe-fast-food-hamburger-flat-icon-by-vexels.png"
             class="rounded mx-auto d-block burgerimg" alt="burger image">
         <h1>Eat-Da-Burger!</h1>
         <div class="row">
@@ -9,7 +9,7 @@
                 <ul>
                     {{#each stuff}}
                     {{#unless devoured}}
-                    {{> devoured/stuff-block devoured=true}}
+                    {{> devoured/stuff-block devoured=false}}
                     {{/unless}}
                     <button type="submit" id="delete" value={{stuff.id}}>Delete</button>
                     {{/each}}
@@ -18,7 +18,7 @@
             <div class="col-md-6 devoured">
                 {{#each stuff}}
                 {{#if devoured}}
-                {{> devoured/stuff-block sleep=false}}
+                {{> devoured/stuff-block devoured=true}}
                 {{/if}}
                 {{/each}}
             </div>
